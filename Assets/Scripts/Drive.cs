@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Drive : MonoBehaviour
 {
     public float speed = 10.0f;
     public float rotationSpeed = 100.0f;
+    public Transform transGun;
 
     void Update()
     {
@@ -23,6 +25,16 @@ public class Drive : MonoBehaviour
         transform.Translate(0, 0, translation);
 
         // Rotate around our y-axis
-        transform.Rotate(0, rotation, 0);
+        transform.Rotate(0, rotation, 0);   
+           
+        if (Input.GetKey(KeyCode.T))
+        {
+            transGun.RotateAround(transGun.position, transGun.right, -2);
+        }
+       else if (Input.GetKey(KeyCode.G))
+        {
+            transGun.RotateAround(transGun.position, transGun.right, 2);
+        }
+
     }
 }
